@@ -113,3 +113,12 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# pyenv config
+eval "$(pyenv init -)"
+
+# Created by `pipx` on 2022-02-23 20:43:15
+export PATH="$PATH:/home/matheus/.local/bin"
+
+# pipx completions
+eval "$(register-python-argcomplete pipx)"
