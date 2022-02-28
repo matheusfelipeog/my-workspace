@@ -122,3 +122,6 @@ export PATH="$PATH:/home/matheus/.local/bin"
 
 # pipx completions
 eval "$(register-python-argcomplete pipx)"
+
+# Set the GPG to use the terminal connected to the stdin of the current session
+export GPG_TTY=$(tty)
