@@ -123,5 +123,7 @@ export PATH="$PATH:/home/matheus/.local/bin"
 # pipx completions
 eval "$(register-python-argcomplete pipx)"
 
-# Set the GPG to use the terminal connected to the stdin of the current session
-export GPG_TTY=$(tty)
+# Set the GPG to use the terminal connected to the stdin of the current session.
+# $TTY variable is set by ZSH during startup to give terminal access even when stdin is redirected.
+# See more at: https://unix.stackexchange.com/a/608921
+export GPG_TTY=$TTY
