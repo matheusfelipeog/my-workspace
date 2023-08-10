@@ -128,3 +128,8 @@ eval "$(register-python-argcomplete pipx)"
 # $TTY variable is set by ZSH during startup to give terminal access even when stdin is redirected.
 # See more at: https://unix.stackexchange.com/a/608921
 export GPG_TTY=$TTY
+
+# NVM config. See more at: https://github.com/nvm-sh/nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
