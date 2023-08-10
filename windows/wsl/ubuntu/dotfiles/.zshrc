@@ -82,6 +82,7 @@ plugins=(
         zsh-syntax-highlighting
         zsh-autosuggestions
         docker
+        npm
 )
 
 source $ZSH/oh-my-zsh.sh
