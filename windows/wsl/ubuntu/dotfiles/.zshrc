@@ -78,12 +78,15 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-        git
-        zsh-syntax-highlighting
-        zsh-autosuggestions
-        docker
-        npm
-        poetry
+	git
+	zsh-syntax-highlighting
+	zsh-autosuggestions
+	zsh-autocomplete
+	docker
+	npm
+	pip
+	poetry
+	httpie
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -135,3 +138,12 @@ export GPG_TTY=$TTY
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Zoxide completion and initialization.
+eval "$(zoxide init zsh)"
+
+# Set up fzf key bindings and fuzzy completion. Zoxide integration.
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Eza completions
+export FPATH="~/.github-repos/completions/zsh:$FPATH"
