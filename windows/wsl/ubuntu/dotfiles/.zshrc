@@ -11,6 +11,9 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# user's private bin
+export PATH="$HOME/.local/bin:$PATH"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -33,7 +36,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
@@ -82,11 +85,17 @@ plugins=(
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 	zsh-autocomplete
+	gpg-agent
+	fzf
+	zoxide
 	docker
-	npm
+	mise
 	pip
+	pipenv
 	poetry
+	uv
 	httpie
+	npm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -119,31 +128,6 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# pyenv config
-eval "$(pyenv init -)"
-
-# Created by `pipx` on 2022-02-23 20:43:15
-export PATH="$PATH:/home/matheus/.local/bin"
-
-# pipx completions
-eval "$(register-python-argcomplete pipx)"
-
-# Set the GPG to use the terminal connected to the stdin of the current session
-# $TTY variable is set by ZSH during startup to give terminal access even when stdin is redirected.
-# See more at: https://unix.stackexchange.com/a/608921
-export GPG_TTY=$TTY
-
-# NVM config. See more at: https://github.com/nvm-sh/nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Zoxide completion and initialization.
-eval "$(zoxide init zsh)"
-
-# Set up fzf key bindings and fuzzy completion. Zoxide integration.
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Eza completions
 export FPATH="~/.github-repos/completions/zsh:$FPATH"
