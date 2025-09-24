@@ -131,3 +131,13 @@ source $ZSH/oh-my-zsh.sh
 
 # Eza completions
 export FPATH="~/.github-repos/completions/zsh:$FPATH"
+
+# uv enviroment variables
+
+# Whether to allow Python downloads.
+# "automatic": Automatically download managed Python installations when needed (default)
+# "manual": Do not automatically download managed Python installations; require explicit installation
+# "never": Do not ever allow Python downloads
+# ref 1: https://docs.astral.sh/uv/reference/settings/#python-downloads
+# ref 2: https://docs.astral.sh/uv/reference/environment/#uv_python_downloads
+export UV_PYTHON_DOWNLOADS="never"
