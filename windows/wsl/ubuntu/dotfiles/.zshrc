@@ -142,3 +142,26 @@ export FPATH="~/.github-repos/completions/zsh:$FPATH"
 # ref 1: https://docs.astral.sh/uv/reference/settings/#python-downloads
 # ref 2: https://docs.astral.sh/uv/reference/environment/#uv_python_downloads
 export UV_PYTHON_DOWNLOADS="never"
+
+# Configuration to centralize access to the GitHub access token
+# for both gh (GitHub CLI) and git, using a single source
+# on Windows and WSL via the Windows GCM (Git Credential Manager) keyring.
+# ref 1: https://git-scm.com/doc/credential-helpers
+# ref 2: https://git-scm.com/docs/gitcredentials
+# ref 3: https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git
+# ref 4: https://cli.github.com/manual/gh_auth_login
+# ref 5: https://github.com/cli/cli/discussions/10082
+if command -v gh.exe >/dev/null 2>&1; then
+    GH_TOKEN_VALUE=$(gh.exe auth token 2>/dev/null)
+    
+    if [[ -n "$GH_TOKEN_VALUE" ]]; then
+        export GH_TOKEN="$GH_TOKEN_VALUE"
+		unset GH_TOKEN_VALUE
+    else
+        echo "[gh-token] ⚠️ Unable to retrieve token via 'gh.exe auth token'."
+        echo "[gh-token]     Make sure you have authenticated using 'gh auth login' in Windows."
+    fi
+else
+    echo "[gh-token] ❌ 'gh.exe' not found in PATH."
+    echo "[gh-token]     Solution: Install GitHub CLI (gh) on Windows and ensure it's accessible from WSL."
+fi
