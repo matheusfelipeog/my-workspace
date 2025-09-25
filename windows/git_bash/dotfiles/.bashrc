@@ -5,3 +5,6 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 
 # VSCode Profile: https://code.visualstudio.com/docs/terminal/profiles#_git-bash
 export PROMPT_COMMAND='history -a'
+
+# https://cli.github.com/manual/gh_completion
+eval "$(gh completion -s bash)"
