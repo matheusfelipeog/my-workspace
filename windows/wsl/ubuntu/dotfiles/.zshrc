@@ -81,22 +81,22 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	gh
-	git
-	zsh-syntax-highlighting
-	zsh-autosuggestions
-	zsh-autocomplete
-	gpg-agent
-	fzf
-	zoxide
-	docker
-	mise
-	pip
-	pipenv
-	poetry
-	uv
-	httpie
-	npm
+    gh
+    git
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-autocomplete
+    gpg-agent
+    fzf
+    zoxide
+    docker
+    mise
+    pip
+    pipenv
+    poetry
+    uv
+    httpie
+    npm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -143,6 +143,14 @@ export FPATH="~/.github-repos/completions/zsh:$FPATH"
 # ref 2: https://docs.astral.sh/uv/reference/environment/#uv_python_downloads
 export UV_PYTHON_DOWNLOADS="never"
 
+# fzf enviroment variables
+export FZF_DEFAULT_OPTS="\
+    --style=full \
+    --layout=default \
+    --preview='[[ \$(basename {}) == \".env\" || \$(basename {}) == *.env ]] && echo \"🔒 Hidden content (.env)\" || bat --color=always --style=numbers --line-range=:500 {}' \
+    --walker-skip='.git,node_modules,.venv,__pycache__,pytest_cache'
+"
+
 # Configuration to centralize access to the GitHub access token
 # for both gh (GitHub CLI) and git, using a single source
 # on Windows and WSL via the Windows GCM (Git Credential Manager) keyring.
@@ -153,7 +161,7 @@ export UV_PYTHON_DOWNLOADS="never"
 # ref 5: https://github.com/cli/cli/discussions/10082
 if command -v gh.exe >/dev/null 2>&1; then
     GH_TOKEN_VALUE=$(gh.exe auth token 2>/dev/null)
-    
+
     if [[ -n "$GH_TOKEN_VALUE" ]]; then
         export GH_TOKEN="$GH_TOKEN_VALUE"
 		unset GH_TOKEN_VALUE
