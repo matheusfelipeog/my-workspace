@@ -145,10 +145,10 @@ export UV_PYTHON_DOWNLOADS="never"
 
 # fzf enviroment variables
 export FZF_DEFAULT_OPTS="\
-    --style=full \
-    --layout=default \
-    --preview='[[ \$(basename {}) == \".env\" || \$(basename {}) == *.env ]] && echo \"🔒 Hidden content (.env)\" || bat --color=always --style=numbers --line-range=:500 {}' \
-    --walker-skip='.git,node_modules,.venv,__pycache__,pytest_cache'
+ --style=full\
+ --layout=default\
+ --preview='[[ \$(basename {}) == \".env\" || \$(basename {}) == *.env ]] && echo \"🔒 Hidden content (.env)\" || bat --color=always --style=numbers --line-range=:500 {}'\
+ --walker-skip='.git,node_modules,.venv,__pycache__,pytest_cache'
 "
 
 # Configuration to centralize access to the GitHub access token
